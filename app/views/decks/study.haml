@@ -1,0 +1,22 @@
+= simple_form_for @deck, url: deck_update_comprehension_path, method: :patch do |f|
+
+  %h1.page-title Studying: #{@deck.name}
+
+  - if @cards_to_study.any?
+
+    %ul#cards-list.study-session-mode
+
+      = f.simple_fields_for :cards do |card|
+        - if @cards_to_study.include? card.object
+          = render 'card_comprehension_fields', f: card
+
+    .actions
+      = f.submit 'Finish Study Session'
+      = link_to 'Back', deck_path( @deck ), class: 'button'
+
+  - else 
+
+    %p Wow! You really know this subject. Take a break and try again later.
+
+    .actions
+      = link_to 'Back', deck_path( @deck ), class: 'button'

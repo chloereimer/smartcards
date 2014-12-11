@@ -1,0 +1,23 @@
+%h1 Decks
+
+- if @decks.any?
+
+  .actions
+    = link_to "New Deck", decks_path, method: :post, class: 'button'
+
+  %table#decks-table
+    %thead
+      %tr
+        %th Name
+        %th Cards
+        %th Comprehension
+    %tbody
+      - @decks.each do |deck|
+        %tr
+          %td #{ link_to deck.name, deck_path(deck) }
+          %td #{deck.cards.count}
+          %td #{number_to_percentage( deck.comprehension_level.to_f * 100, precision: 2 )}
+
+- else
+
+  %p No decks found. #{link_to "Why not create one?", decks_path, method: :post }

@@ -1,0 +1,2 @@
+en:
+  greet_user: "Logged in as %{user}"

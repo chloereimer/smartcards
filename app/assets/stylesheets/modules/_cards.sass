@@ -1,0 +1,53 @@
+#cards-list
+  margin: 0
+  padding: 0
+  list-style: none
+
+.card
+  width: 30rem
+  position: relative
+  margin-bottom: 1rem
+
+.front,.back
+  width: 30rem
+  display: block
+  border: 1px solid transparentize( $content_background_inverse, 0.5 )
+  padding: 3rem
+
+.front
+  border-bottom: 1px dashed transparentize( $content_background_inverse, 0.5 )
+.back
+  border-top: 0
+
+.remove-card a
+  position: absolute
+  top: 0.5rem
+  right: 0.5rem
+  font-size: 0
+
+  &:after
+    content: "x"
+    display: block
+    background: darken( $content_background , 2% )
+    color: lighten( $content_color , 30% )
+    width: 1.5rem
+    height: 1.5rem
+    line-height: 1.4rem
+    text-align: center
+    border-radius: 100%
+    font-size: initial
+
+.card-meta
+
+  position: absolute
+  left: 30rem
+  top: 0
+  margin-left: 1rem
+  border: 1px solid darken( $content_background , 7% )
+  padding: 1rem
+  background: darken( $content_background , 2% )
+  color: lighten( $content_color , 30% )
+
+  a
+
+    text-decoration: underline

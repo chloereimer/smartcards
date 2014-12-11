@@ -1,0 +1,33 @@
+= simple_form_for @deck do |f|
+
+  = f.input_field :user_id, as: :hidden, value: current_user.id
+
+  - if( @deck.errors.any? )
+    .errors
+      %p Errors were found:
+      %ul
+        - @deck.errors.full_messages.each do |message|
+          %li #{message}
+
+  = f.input_field :name, class: 'page-title', placeholder: 'Deck name...'
+
+  .actions
+    - unless @deck.new_record? || @deck.cards.count == 0
+      = link_to 'Begin Study Session', deck_study_path( @deck ), class: 'button'
+    = link_to_add_association 'Add Card', f, :cards, 'data-association-insertion-node' => '#cards-list', 'data-association-insertion-method' => 'append', class: 'button add-card-button'
+    = f.submit 'Save Deck'
+    - unless @deck.new_record?
+      = link_to 'Delete Deck', deck_path( @deck ), method: :delete, data: { confirm: 'Are you sure you want to delete this deck?' }, class: 'button'
+
+  %ul#cards-list
+
+    = f.simple_fields_for :cards do |card|
+      = render 'card_fields', f: card
+
+  .actions.secondary-actions
+    - unless @deck.new_record? || @deck.cards.count == 0
+      = link_to 'Begin Study Session', deck_study_path( @deck ), class: 'button'
+    = link_to_add_association 'Add Card', f, :cards, 'data-association-insertion-node' => '#cards-list', 'data-association-insertion-method' => 'append', class: 'button add-card-button'
+    = f.submit 'Save Deck'
+    - unless @deck.new_record?
+      = link_to 'Delete Deck', deck_path( @deck ), method: :delete, data: { confirm: 'Are you sure you want to delete this deck?' }, class: 'button'

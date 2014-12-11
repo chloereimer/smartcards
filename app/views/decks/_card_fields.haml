@@ -1,0 +1,15 @@
+%li.card
+  = f.input_field :front, class: 'front', placeholder: 'Front...'
+  = f.input_field :back, class: 'back', placeholder: 'Back...'
+
+  .remove-card #{link_to_remove_association('Remove Card', f, { wrapper_class: 'card' })}
+
+  .card-meta
+    .comprehension-level
+      .title Comprehension
+      .rating
+        - if( f.object.comprehension_state.nil? || f.object.comprehension_state < 1 )
+          —
+        - else
+          - (1..f.object.comprehension_state).each do
+            &#9733;

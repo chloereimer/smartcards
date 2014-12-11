@@ -1,0 +1,8 @@
+.card
+  .flip
+    .front= f.object.front
+    .back= f.object.back
+  .card-meta
+    = f.input_field :is_tested, as: :hidden, value: 1
+    = f.input_field :is_correct, as: :hidden, class: 'is_correct_input'
+    .is_correct.button Correct

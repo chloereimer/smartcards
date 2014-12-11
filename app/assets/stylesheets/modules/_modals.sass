@@ -1,0 +1,34 @@
+.modal
+
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+  display: flex
+  align-items: center
+  justify-content: center
+
+  background: transparentize( $content_background_inverse, 0.9 )
+  z-index: $modal_z_index
+
+  &.closed
+    display: none
+  
+  &.open ~ .site-content,
+  &.open ~ .site-header
+    +filter(blur(2px))
+    +transition(all 0.2s)
+  &.closed ~ .site-content,
+  &.closed ~ .site-header
+    +filter(blur(0))
+
+
+  .modal-content
+
+    background: lighten( $content_background , 5% )
+    padding: 2rem
+
+    h1:first-of-type
+      margin: 0

@@ -1,0 +1,37 @@
+.site-header
+
+  +outer-container()
+  margin-top: 1rem
+  margin-bottom: 1rem
+
+  .brand
+
+    display: inline
+    font-size: inherit
+
+    a
+      color: inherit
+      &:hover,&:focus
+        color: $accent_color
+
+  .brand,
+  .user-navigation li:not(:last-of-type)
+    &:after
+      content: ' \00B7'
+      font-weight: bold
+
+  .user-navigation
+
+    display: inline
+
+    ul
+
+      display: inline
+
+      margin: 0
+      padding: 0
+      list-style: none
+
+      li
+
+        display: inline
