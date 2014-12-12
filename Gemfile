@@ -61,6 +61,8 @@ group :development, :test do
 
   gem 'rspec-rails' # rspec
   gem 'capybara' # dsl
+  gem 'selenium-webdriver' # for selenium testing in capybara
+  gem 'database_cleaner' # for db cleaning strategies during tests
   gem 'factory_girl' # factories
   gem 'fuubar' # output formatting
 

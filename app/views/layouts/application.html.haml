@@ -16,17 +16,18 @@
   %body{ data: { controller: "#{controller_name}", action: "#{action_name}" }, class: "#{controller_name}-#{action_name}" }
 
     - flash.each do |type, message|
-
       - if type.starts_with?('comprehension')
-
         .flash.modal.open.comprehension
-
           .modal-content
-
             = message.html_safe
 
     = render 'layouts/header'
 
     %main.site-content
+
+      - flash.each do |type, message|
+        - if %w(error notice alert).include?( type )
+          .flash{ class: type }
+            = message
 
       = yield

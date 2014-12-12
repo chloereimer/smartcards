@@ -13,5 +13,9 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     render json: { error: "You're not authorized to perform that action." }, status: 403
   end
+
+  def after_sign_out_path_for(user)
+    new_user_session_path
+  end
   
 end
