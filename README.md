@@ -1,4 +1,4 @@
 SmartCards
 ==========
 
-See [the website](http://www.studywithsmartcards.com).
+See [the website](http://app.studywithsmartcards.com).
